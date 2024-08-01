@@ -3,11 +3,19 @@
  */
 package com.ecom.beans;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 /**
  * 
  */
+@Entity
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "ECOM_user0")
 	private Integer userId;
 	private String firstName;	
 	private String lastName;
@@ -15,6 +23,9 @@ public class User {
 	private String email;
 	private String phoneNum;
 	
+	public User() {
+		
+	}
 	public User(Integer userId, String firstName, String lastName, char[] password, String email, String phoneNum) {
 		super();
 		this.userId = userId;
