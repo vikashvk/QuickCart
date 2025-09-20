@@ -6,9 +6,9 @@ import com.ecom.beans.Product;
 
 public interface IProductService {
 
-	public String save(Product product);
-	public List<Product> findAll();
-	public Product findById(int prodId);
-	public void removeById(int productid);
-	public void updateProduct(int itemid, Product product);
+	String save(Product product);
+	List<Product> findAll();
+	Product findById(int prodId);
+	void removeById(int productid);
+	void updateProduct(int itemid, Product product);
 }

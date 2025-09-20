@@ -12,9 +12,9 @@ import com.ecom.beans.Product;
  */
 public interface ProductDao {
 
-	public void save(Product product);
-	public List<Product> findAll();
-	public Product findByProductId(int prodId);
-	public void removeByProductId(int productid);
+	void save(Product product);
+	List<Product> findAll();
+	Product findByProductId(int prodId);
+	void removeByProductId(int productid);
 	
 }
