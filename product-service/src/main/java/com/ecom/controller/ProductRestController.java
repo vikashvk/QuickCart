@@ -3,8 +3,9 @@
  */
 package com.ecom.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ecom.dto.ProductRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import com.ecom.service.ProductServiceImpl;
 
@@ -12,10 +13,15 @@ import com.ecom.service.ProductServiceImpl;
  * 
  */
 @RestController
-@RequestMapping("/shop")
+@RequestMapping("/api/shop")
 public class ProductRestController {
 
 	private ProductServiceImpl productService;
-	
+
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createOrder(@RequestBody ProductRequest prodRequest){
+		productService.createProduct(prodRequest );
+	}
 	
 }

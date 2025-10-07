@@ -6,15 +6,12 @@ package com.ecom.dao;
 import java.util.List;
 
 import com.ecom.beans.Product;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * 
  */
-public interface ProductDao {
+public interface ProductDao extends MongoRepository<Product, String> {
 
-	void save(Product product);
-	List<Product> findAll();
-	Product findByProductId(int prodId);
-	void removeByProductId(int productid);
-	
+
 }

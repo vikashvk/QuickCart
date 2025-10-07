@@ -1,51 +1,35 @@
 /**
- * 
+ *
  */
 package com.ecom.service;
 
 import java.util.List;
 
+import com.ecom.dto.ProductRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import lombok.extern.slf4j.Slf4j;
 import com.ecom.beans.Product;
 import com.ecom.dao.ProductDao;
 
 /**
- * 
+ *
  */
+@Slf4j
 @Service
-public class ProductServiceImpl implements IProductService {
+@RequiredArgsConstructor
+public class ProductServiceImpl {
 
-	private ProductDao productDao;
-	
-	@Override
-	public String save(Product product) {
-		productDao.save(product);
-		return "Added Successfully";
-	}
+    private final ProductDao productDao;
 
-	@Override
-	public List<Product> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Product findById(int prodId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void removeById(int productid) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateProduct(int itemid, Product product) {
-		// TODO Auto-generated method stub
-
-	}
-
+    public void createProduct(ProductRequest productRequest) {
+        Product product = Product.builder()
+                .prodName(productRequest.name())
+                .description(productRequest.description())
+                .prodPrice(productRequest.price())
+                .build();
+        productDao.save(product);
+        log.info("Saved Successfully");
+    }
 }
