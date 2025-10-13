@@ -24,7 +24,7 @@ import java.math.BigDecimal;
 public class Product {
 
 	@Id
-	private int prodId;
+	private String prodId;
 	private String prodName;
 	private BigDecimal prodPrice;
 	private String description;
