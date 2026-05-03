@@ -53,12 +53,19 @@ Order Model
 ```java
 public class Order {
     @Id
-    private String id;
-    private String name;
-    private String description;
+    private Long serial_id;
+    private String orderNumber;
+    private String skuCode;
     private BigDecimal price;
+    private Integer quantity;
 }
 ```
+
+## Inventory Service
+
+| HTTP        | Method           | URL  |
+| ------------- |:-------------:| -----:|
+| GET      | `isInStock()` | /api/inventory |
 
 
 ## Docker
