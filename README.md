@@ -68,6 +68,16 @@ public class Order {
 | GET      | `isInStock()` | /api/inventory |
 
 
+Inventory Model
+```java
+public class Inventory {
+    @Id
+    private String id;
+    private String skuCode;
+    private Integer quantity;
+}
+```
+
 ## Docker
 In Order Service, we are going to use MySQL Database, we can download MySQL using docker-compose.
 docker-compose.yml
