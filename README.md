@@ -78,6 +78,11 @@ public class Inventory {
 }
 ```
 
+
+Synchronous Communication between our Order Service and Inventory Service using Spring Cloud OpenFeign Library.
+Spring Cloud OpenFeign library uses that provides OpenFeign integrations with Spring Boot and Spring Cloud. It provides a declarative REST Client that makes consuming REST Endpoints in our code easy.
+
+
 ## Docker
 In Order Service, we are going to use MySQL Database, we can download MySQL using docker-compose.
 docker-compose.yml
