@@ -125,3 +125,8 @@ Flyway will look for the scripts under this particular folder, and Flyway will a
 V<Number>__file-name.sql
 Example: V1__init.sql, V2__add_products.sql, etc.
 Note that the number, inside the name of the SQL file, needs to be incremented for each database migration you want to run.
+
+## Feign
+
+Synchronous Communication between our Order Service and Inventory Service using Spring Cloud OpenFeign Library.
+Spring Cloud OpenFeign library uses that provides OpenFeign integrations with Spring Boot and Spring Cloud. It provides a declarative REST Client that makes consuming REST Endpoints in our code easy.
