@@ -17,13 +17,13 @@ public class OrderService {
     private final OrderRepository orderRepository;
 private final InventoryClient inventoryClient;
     public void placeOrder(OrderRequest orderRequest) {
-        boolean isInStock= inventoryClient.isInStock(orderRequest.skuCode(),orderRequest.qty());
+        boolean isInStock= inventoryClient.isInStock(orderRequest.skuCode(),orderRequest.quantity());
         //map orderRequest to Order Object
         if(isInStock) {
             Order order = new Order();
             order.setOrderNumber(UUID.randomUUID().toString());
             order.setPrice(orderRequest.price());
-            order.setQuantity(orderRequest.qty());
+            order.setQuantity(orderRequest.quantity());
             order.setSkuCode(orderRequest.skuCode());
 
             //save order to repo
