@@ -130,3 +130,7 @@ Note that the number, inside the name of the SQL file, needs to be incremented f
 
 Synchronous Communication between our Order Service and Inventory Service using Spring Cloud OpenFeign Library.
 Spring Cloud OpenFeign library uses that provides OpenFeign integrations with Spring Boot and Spring Cloud. It provides a declarative REST Client that makes consuming REST Endpoints in our code easy.
+
+## API Gateway
+
+Single entry point, cross-cutting concerns (auth, rate limiting, request routing, logging, mointoring) handled once instead of N times.
