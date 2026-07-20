@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:8081/api/order
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "skuCode": "iphone15",
+        "price": "150.00",
+        "quantity": 1
+    }
+settings: {}
+order: 5000

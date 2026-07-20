@@ -1,0 +1,8 @@
+workspace:
+  id: 8cdf2cd5-269b-4825-87c3-574b75b0ec3a
+localResources:
+  collections:
+    - ../QuickCart.postman_collection.json
+cloudResources:
+  collections:
+    ../postman/collections/QuickCart: 5016140-71a63d1a-d814-4b9c-82aa-9fce799f0d28

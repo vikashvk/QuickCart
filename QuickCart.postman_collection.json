@@ -1,0 +1,100 @@
+{
+  "info": {
+    "_postman_id": "71a63d1a-d814-4b9c-82aa-9fce799f0d28",
+    "name": "QuickCart",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "5016140"
+  },
+  "item": [
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Fetch Product",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "createOrder",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"skuCode\": \"Spider-man Mask\",\n    \"price\" :  \"150.00\",\n    \"quantity\": 1\n\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/order",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "order"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "isInStock",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Submit Order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"skuCode\": \"iphone15\",\n    \"price\": \"150.00\",\n    \"quantity\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/order",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "order"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Product-API",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
