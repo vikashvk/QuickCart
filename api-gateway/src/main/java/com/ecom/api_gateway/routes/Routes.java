@@ -15,13 +15,13 @@ public class Routes {
 
     @Bean
     public RouterFunction<ServerResponse> productServiceRoute() {
-        return GatewayRouterFunctions.route("product_service").route(RequestPredicates.path("/api/product/**"),
+        return GatewayRouterFunctions.route("product-service").route(RequestPredicates.path("/api/product/**"),
                         http("http://localhost:8080")).build();
     }
 
     @Bean
     public RouterFunction<ServerResponse> orderServiceRoute() {
-        return GatewayRouterFunctions.route("order_service").route(RequestPredicates.path("/api/order/**"),
+        return GatewayRouterFunctions.route("order-service").route(RequestPredicates.path("/api/order/**"),
                 http("http://localhost:8081")).build();
     }
 
