@@ -1,0 +1,17 @@
+$kind: http-request
+name: Submit Order-API
+url: http://localhost:9000/api/order
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "skuCode": "iphone13",
+        "price": "42.00",
+        "quantity": 100
+    }
+auth:
+  type: oauth2
+  credentials:
+    addTokenTo: header
+order: 2715890685577549

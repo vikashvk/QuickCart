@@ -1,5 +1,10 @@
 $kind: http-request
+name: Product-API
 url: http://localhost:9000/api/product
 method: GET
+auth:
+  type: oauth2
+  credentials:
+    addTokenTo: header
 settings: {}
 order: 6000
