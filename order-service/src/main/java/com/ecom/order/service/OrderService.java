@@ -3,6 +3,7 @@ package com.ecom.order.service;
 import com.ecom.order.client.InventoryClient;
 import com.ecom.order.dao.OrderRepository;
 import com.ecom.order.dto.OrderRequest;
+import com.ecom.order.exception.OutofStockException;
 import com.ecom.order.model.Order;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ private final InventoryClient inventoryClient;
             log.info("Saved in repo");
         }
         else {
-            throw new RuntimeException("Product with skuCode "+orderRequest.skuCode()+" is Out of Stock");
+            throw new OutofStockException("Product with skuCode "+orderRequest.skuCode()+" is Out of Stock");
         }
     }
 }
