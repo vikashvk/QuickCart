@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, signal } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, signal, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home implements AfterViewInit, OnDestroy {
+export class Home implements OnInit,AfterViewInit, OnDestroy {
+
+    private readonly oidcSecurityService = inject(OidcSecurityService);
+    isAuthenticated = false;
+    username = "";
+ 
   categories = [
     { name: 'Doomscrolling', tag: 'Classic' },
     { name: "Nap o'clock", tag: 'Cozy' },
@@ -17,6 +23,27 @@ export class Home implements AfterViewInit, OnDestroy {
     { name: 'Wiki rabbit hole', tag: 'Deep dive' }
   ];
 
+   ngOnInit(): void {
+    this.oidcSecurityService.isAuthenticated$.subscribe(
+      ({isAuthenticated}) => {
+        this.isAuthenticated = isAuthenticated;
+      } 
+    )
+    this.oidcSecurityService.userData$.subscribe(
+      ({ userData }) => {
+        this.username = userData.preferred_username;
+      }
+    );
+  }
+   login(): void {
+    this.oidcSecurityService.authorize();
+  }
+  logout(): void {
+    this.oidcSecurityService
+    .logoff()
+    .subscribe((result)=>console.log(result))
+  }
+  
   hours = signal('00');
   minutes = signal('00');
   seconds = signal('00');
