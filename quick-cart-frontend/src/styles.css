@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tailwind directives: include base, components, and utilities
+	Fixes: Unknown at rule @tailwind by ensuring all core layers are present */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
