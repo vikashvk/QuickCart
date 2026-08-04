@@ -70,10 +70,59 @@
 </div>
 
   <div class="nav-links">
-    <a href="#today">Today's list</a>
-    <a href="#waste">Time-wasters</a>
-    <a href="#rewards">Rewards</a>
-    <button class="cart-btn">24h credit</button>
+     <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                <li>
+                    @if (isAuthenticated) {
+                      <p class="text-white">Hi {{ username }}</p>
+                      <a
+                        (click)="logout()"
+                        class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Logout
+                      </a>
+                    } @else {
+                      <a
+                        (click)="login()"
+                        class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                        Login
+                      </a>
+                    }
+                </li>
+            </ul>
+<!-- From Uiverse.io by ilkhoeri --> 
+<button type="button" class="button">
+  <span class="fold"></span>
+
+  <div class="points_wrapper">
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+  </div>
+
+  <span class="inner"
+    ><svg
+      class="icon"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2.5"
+    >
+      <polyline
+        points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"
+      ></polyline></svg
+    >Credits</span
+  >
+</button>
+
   </div>
 </nav>
 
