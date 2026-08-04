@@ -6,7 +6,7 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
