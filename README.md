@@ -134,3 +134,8 @@ Spring Cloud OpenFeign library uses that provides OpenFeign integrations with Sp
 ## API Gateway
 
 Single entry point, cross-cutting concerns (auth, rate limiting, request routing, logging, mointoring) handled once instead of N times.
+
+## Angular
+
+"Time in a Bottle"
+
