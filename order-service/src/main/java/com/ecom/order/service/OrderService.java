@@ -3,6 +3,7 @@ package com.ecom.order.service;
 import com.ecom.order.client.InventoryClient;
 import com.ecom.order.dao.OrderRepository;
 import com.ecom.order.dto.OrderRequest;
+import com.ecom.order.dto.OrderResponse;
 import com.ecom.order.exception.OutofStockException;
 import com.ecom.order.model.Order;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import java.util.UUID;
 public class OrderService {
     private final OrderRepository orderRepository;
 private final InventoryClient inventoryClient;
-    public void placeOrder(OrderRequest orderRequest) {
+    public OrderResponse placeOrder(OrderRequest orderRequest) {
         boolean isInStock= inventoryClient.isInStock(orderRequest.skuCode(),orderRequest.quantity());
         //map orderRequest to Order Object
         if(isInStock) {
@@ -29,7 +30,13 @@ private final InventoryClient inventoryClient;
 
             //save order to repo
             orderRepository.save(order);
-            log.info("Saved in repo");
+            return new OrderResponse(
+                    order.getOrderNumber(),
+                    order.getSkuCode(),
+                    order.getQuantity(),
+                    order.getPrice(),
+                    "CONFIRMED"
+            );
         }
         else {
             throw new OutofStockException("Product with skuCode "+orderRequest.skuCode()+" is Out of Stock");
