@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from '../../model/order';
+import { Injectable } from '@angular/core';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
 export class OrderService {
 
     constructor(private httpClient: HttpClient) {
@@ -12,4 +14,5 @@ export class OrderService {
     submitOrder(order: Order): Observable<Order> {
         return this.httpClient.post<Order>('http://localhost:9000/api/order',order);
     }
+
 }

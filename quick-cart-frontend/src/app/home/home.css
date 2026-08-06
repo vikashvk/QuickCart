@@ -263,50 +263,6 @@
   }
 }
 
-.hero { padding: 64px 32px 48px; max-width: 520px; }
-.eyebrow {
-  display: inline-block; background: #F1E4CC; color: #7A4E1D;
-  font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px;
-}
-.hero h1 {
-  font-family: 'Fraunces', serif; font-weight: 700; font-size: 40px;
-  line-height: 1.12; margin: 0 0 16px; color: #3A2A18;
-}
-.hero p { font-size: 15px; color: #6B5A44; margin: 0 0 28px; }
-.hero-actions { display: flex; gap: 12px; }
-.btn-primary {
-  background: #3A2A18; color: #FBF6EC; border: none;
-  padding: 13px 24px; border-radius: 6px; font-weight: 500; font-size: 14px; cursor: pointer;
-}
-.btn-ghost {
-  background: transparent; color: #3A2A18; border: 0.5px solid #C9BB9E;
-  padding: 13px 24px; border-radius: 6px; font-weight: 500; font-size: 14px; cursor: pointer;
-}
-
-.categories { padding: 0 32px 32px; }
-.categories h2 { font-family: 'Fraunces', serif; font-size: 20px; margin: 0 0 18px; color: #3A2A18; }
-.category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.category-card {
-  background: #FFFDF8; border: 0.5px solid #E3D9C4; border-radius: 10px;
-  padding: 18px; transition: transform 0.15s ease;
-}
-.category-card:hover { transform: translateY(-3px); }
-.cat-tag { font-size: 11px; color: #8A7A63; text-transform: uppercase; }
-.category-card h3 { font-family: 'Fraunces', serif; margin: 6px 0 0; font-size: 15px; color: #3A2A18; }
-
-.value-strip {
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px;
-  padding: 28px 32px 40px; border-top: 0.5px solid #E3D9C4; margin-top: 16px;
-}
-.value-item h4 { font-family: 'Fraunces', serif; margin: 0 0 4px; font-size: 14px; color: #3A2A18; }
-.value-item p { color: #8A7A63; font-size: 12px; margin: 0; }
-
-@media (max-width: 768px) {
-  .hero h1 { font-size: 30px; }
-  .category-grid { grid-template-columns: repeat(2, 1fr); }
-  .nav-links a { display: none; }
-}
-
 
 /* keyframes and .loader__* animation-name rules — paste unchanged from what you gave me */
 

@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Service } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../../model/product';
 
-@Service()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class ProductService {
     constructor(private httpClient: HttpClient) {
     }
@@ -17,3 +20,4 @@ export class ProductService {
     }
 
 }
+
