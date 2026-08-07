@@ -11,9 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
-  imports: [AsyncPipe,
-    JsonPipe,
-    FormsModule],
+  imports: [FormsModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
@@ -25,23 +23,49 @@ export class HomePage implements OnInit {
   private readonly router = inject(Router);
 
   isAuthenticated = false;
-  products: Array<Product> = [];
+  products: Product[] = [];
   orderFailed = false;
   orderSuccess = false;
   quantityIsNull = false;
 
   ngOnInit(): void {
+    // Authentication
     this.oidcSecurityService.isAuthenticated$.subscribe(
       ({ isAuthenticated }) => {
         this.isAuthenticated = isAuthenticated;
-        this.productService.getProducts()
-          .pipe()
-          .subscribe(product => {
-            this.products = product;
-          })
+
+        if (!isAuthenticated) {
+          this.router.navigateByUrl('/');
+          return;
+        }
+        this.loadProducts();
+
       }
-    )
+    );
   }
+
+  // Products
+
+  private loadProducts(): void {
+
+    this.productService.getProducts()
+      .subscribe({
+
+        next: (products) => {
+          console.log('Products received:', products);
+          this.products = products;
+        },
+
+        error: (error) => {
+          console.error(
+            'Failed to load products:',
+            error
+          );
+        }
+      });
+  }
+
+
   goToCreateProductPage() {
     this.router.navigateByUrl('/add-product');
   }
@@ -57,6 +81,7 @@ export class HomePage implements OnInit {
         this.orderFailed = true;
         this.orderSuccess = false;
         this.quantityIsNull = true;
+        return;
       }
       else {
         const order: Order = {

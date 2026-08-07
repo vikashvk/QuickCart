@@ -1,11 +1,11 @@
 import { Component, signal,inject,OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Home } from './home/home';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { Header } from './pages/header/header';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Home],
+  imports: [RouterOutlet,Header],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
