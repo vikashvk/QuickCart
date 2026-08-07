@@ -10,12 +10,12 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home implements OnInit,AfterViewInit, OnDestroy {
+export class Home implements OnInit, AfterViewInit, OnDestroy {
 
-    private readonly oidcSecurityService = inject(OidcSecurityService);
-    isAuthenticated = false;
-    username = "";
- 
+  private readonly oidcSecurityService = inject(OidcSecurityService);
+  isAuthenticated = false;
+  username = "";
+
   categories = [
     { name: 'Doomscrolling', tag: 'Classic' },
     { name: "Nap o'clock", tag: 'Cozy' },
@@ -23,27 +23,32 @@ export class Home implements OnInit,AfterViewInit, OnDestroy {
     { name: 'Wiki rabbit hole', tag: 'Deep dive' }
   ];
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.oidcSecurityService.isAuthenticated$.subscribe(
-      ({isAuthenticated}) => {
+      ({ isAuthenticated }) => {
         this.isAuthenticated = isAuthenticated;
-      } 
+      }
     )
     this.oidcSecurityService.userData$.subscribe(
       ({ userData }) => {
-        this.username = userData.preferred_username;
+        this.username = userData?.preferred_username ?? '';
       }
     );
+    // this.oidcSecurityService.userData$.subscribe(
+    //   ({ userData }) => {
+    //     this.username = userData.preferred_username;
+    //   }
+    // );
   }
-   login(): void {
+  login(): void {
     this.oidcSecurityService.authorize();
   }
   logout(): void {
     this.oidcSecurityService
-    .logoff()
-    .subscribe((result)=>console.log(result))
+      .logoff()
+      .subscribe((result) => console.log(result))
   }
-  
+
   hours = signal('00');
   minutes = signal('00');
   seconds = signal('00');
@@ -70,7 +75,7 @@ export class Home implements OnInit,AfterViewInit, OnDestroy {
 
     const midnight = new Date(now);
     midnight.setHours(24, 0, 0, 0);
-    
+
     const diff = midnight.getTime() - now.getTime();
 
     const h = this.pad(Math.floor(diff / 3600000));
