@@ -4,10 +4,11 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { Router } from '@angular/router';
 import { TimeCredit } from '../../core/models/models';
 import { CreditRing } from '../credit-ring/credit-ring';
+import { CountdownComponent } from '../countdown/countdown';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule,CreditRing],
+  imports: [CommonModule,CreditRing,CountdownComponent],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -17,7 +18,7 @@ export class Header {
   @Input() cartCount = 0;
   @Input() userName = 'Guest';
   @Output() cartClick = new EventEmitter<void>();
-
+}
   // private readonly oidcSecurityService = inject(OidcSecurityService);
   // private readonly router = inject(Router);
 
@@ -133,4 +134,4 @@ export class Header {
   //   return n.toString().padStart(2, '0');
   // }
 
-}
+

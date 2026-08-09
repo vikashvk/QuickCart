@@ -1,0 +1,17 @@
+<div class="countdown" [class.warm]="urgency === 'warm'" [class.critical]="urgency === 'critical'" [class.pulse]="isFinalMinute">
+  <span class="segment">
+    <span class="value">{{ pad(hours) }}</span>
+    <span class="label">h</span>
+  </span>
+  <span class="colon">:</span>
+  <span class="segment">
+    <span class="value">{{ pad(minutes) }}</span>
+    <span class="label">m</span>
+  </span>
+  <span class="colon">:</span>
+  <span class="segment">
+    <span class="value">{{ pad(seconds) }}</span>
+    <span class="label">s</span>
+  </span>
+  <span class="tag">left today</span>
+</div>

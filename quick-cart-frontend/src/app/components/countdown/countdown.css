@@ -1,0 +1,62 @@
+.countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-display);
+  color: var(--ink);
+  transition: color 0.4s ease;
+}
+
+.segment {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.value {
+  font-weight: 700;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.4s ease;
+}
+
+.label {
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+.colon {
+  font-weight: 700;
+  color: var(--ink-soft);
+  padding: 0 1px;
+}
+
+.tag {
+  margin-left: 6px;
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+.countdown.warm .value {
+  color: var(--orange-hot);
+}
+
+.countdown.critical .value {
+  color: #e5484d;
+}
+.countdown.critical .tag {
+  color: #e5484d;
+}
+
+.countdown.pulse .value {
+  animation: pulse-beat 1s ease-in-out infinite;
+}
+
+@keyframes pulse-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown.pulse .value { animation: none; }
+}
