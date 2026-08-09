@@ -1,4 +1,30 @@
-<app-header></app-header>
-<div class="page-content">
-    <router-outlet></router-outlet>
-</div>
+<app-header
+  [credit]="credit"
+  [cartCount]="cartLines.length"
+  userName="Alex"
+  (cartClick)="cartOpen = true"
+></app-header>
+
+<main class="page">
+  <section class="hero">
+    <h1>Spend your day, hour by hour.</h1>
+    <p>Every account gets a fresh 24hr credit at midnight. What you don't spend, you lose — so make it count.</p>
+  </section>
+
+  <app-product-grid
+    [products]="products"
+    [remainingSeconds]="remainingSeconds"
+    (addToCart)="onAddToCart($event)"
+  ></app-product-grid>
+</main>
+
+<app-cart-drawer
+  [open]="cartOpen"
+  [lines]="cartLines"
+  [remainingSeconds]="remainingSeconds"
+  (closed)="cartOpen = false"
+  (removeLine)="onRemoveLine($event)"
+  (checkout)="onCheckout()"
+></app-cart-drawer>
+
+<div class="toast" *ngIf="toast">{{ toast }}</div>

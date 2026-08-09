@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, inject, Input, OnDestroy, OnInit, Output, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { Router } from '@angular/router';
+import { TimeCredit } from '../../core/models/models';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,14 @@ import { Router } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header implements OnInit,AfterViewInit,OnDestroy{
+export class Header implements OnInit, AfterViewInit, OnDestroy {
 
-   private readonly oidcSecurityService = inject(OidcSecurityService);
+  @Input() credit: TimeCredit | null = null;
+  @Input() cartCount = 0;
+  @Input() userName = 'Guest';
+  @Output() cartClick = new EventEmitter<void>();
+
+  private readonly oidcSecurityService = inject(OidcSecurityService);
   private readonly router = inject(Router);
 
   isAuthenticated = false;
@@ -43,7 +49,7 @@ export class Header implements OnInit,AfterViewInit,OnDestroy{
     );
   }
 
-    login(): void {
+  login(): void {
     this.oidcSecurityService.authorize();
   }
 
@@ -73,8 +79,8 @@ export class Header implements OnInit,AfterViewInit,OnDestroy{
     this.router.navigateByUrl('/add-product');
   }
 
-    //flip clock UI
-    hours = signal('00');
+  //flip clock UI
+  hours = signal('00');
   minutes = signal('00');
   seconds = signal('00');
   currentDay = signal('');

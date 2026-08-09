@@ -1,0 +1,27 @@
+<header class="floating-bar">
+  <div class="brand">
+    <span class="brand-mark">⏳</span>
+    <span class="brand-name">Timespend</span>
+  </div>
+
+  <nav class="nav">
+    <a class="nav-link active" href="javascript:void(0)">Shop</a>
+    <a class="nav-link" href="javascript:void(0)">Fitness</a>
+    <a class="nav-link" href="javascript:void(0)">Career</a>
+  </nav>
+
+  <div class="actions">
+    <app-credit-ring
+      *ngIf="credit"
+      [remainingSeconds]="credit.remainingSeconds"
+      [allowanceSeconds]="credit.dailyAllowanceSeconds"
+    ></app-credit-ring>
+
+    <button class="cart-btn" (click)="cartClick.emit()" aria-label="Open cart">
+      <span class="icon">🛍️</span>
+      <span class="count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+    </button>
+
+    <div class="avatar" [title]="userName">{{ userName.charAt(0) }}</div>
+  </div>
+</header>
