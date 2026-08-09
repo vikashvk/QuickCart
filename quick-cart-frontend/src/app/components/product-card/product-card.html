@@ -1,0 +1,26 @@
+<article class="card" [class.out]="!product.inStock">
+  <div class="thumb">
+    <img [src]="product.imageUrl" [alt]="product.name" loading="lazy" />
+    <span class="chip category">{{ product.category }}</span>
+    <span class="chip out-chip" *ngIf="!product.inStock">Out of stock</span>
+  </div>
+
+  <div class="body">
+    <h3>{{ product.name }}</h3>
+    <p class="desc">{{ product.description }}</p>
+
+    <div class="footer">
+      <div class="price">
+        <span class="clock">⏱</span>
+        <span>{{ priceLabel }}</span>
+      </div>
+      <button
+        class="add-btn"
+        [disabled]="!product.inStock || !affordable"
+        (click)="addToCart.emit(product)"
+      >
+        {{ !product.inStock ? 'Unavailable' : (affordable ? 'Add' : 'Not enough time') }}
+      </button>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,14 @@
+<section class="grid" *ngIf="products.length; else empty">
+  <app-product-card
+    *ngFor="let p of products"
+    [product]="p"
+    [affordable]="affordable(p)"
+    (addToCart)="addToCart.emit($event)"
+  ></app-product-card>
+</section>
+
+<ng-template #empty>
+  <div class="empty-state">
+    <p>Nothing here yet. Check back once the catalog syncs.</p>
+  </div>
+</ng-template>

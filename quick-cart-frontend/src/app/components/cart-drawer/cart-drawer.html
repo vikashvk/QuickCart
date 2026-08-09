@@ -1,0 +1,37 @@
+<div class="backdrop" *ngIf="open" (click)="closed.emit()"></div>
+
+<aside class="drawer" [class.open]="open">
+  <header>
+    <h2>Your basket</h2>
+    <button class="close-btn" (click)="closed.emit()" aria-label="Close cart">✕</button>
+  </header>
+
+  <div class="lines" *ngIf="lines.length; else emptyCart">
+    <div class="line" *ngFor="let l of lines">
+      <img [src]="l.product.imageUrl" [alt]="l.product.name" />
+      <div class="info">
+        <p class="name">{{ l.product.name }}</p>
+        <p class="qty">Qty {{ l.qty }} · {{ fmt(l.product.priceSeconds) }} each</p>
+      </div>
+      <button class="remove" (click)="removeLine.emit(l.product.id)" aria-label="Remove item">✕</button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <p class="empty">Your basket is empty. Time is money — go spend some.</p>
+  </ng-template>
+
+  <footer *ngIf="lines.length">
+    <div class="row">
+      <span>Total</span>
+      <span class="total">{{ fmt(total) }}</span>
+    </div>
+    <div class="row subtle">
+      <span>Remaining after checkout</span>
+      <span [class.negative]="remainingAfter < 0">{{ fmt(remainingAfter < 0 ? 0 : remainingAfter) }}</span>
+    </div>
+    <button class="checkout-btn" [disabled]="!canCheckout" (click)="checkout.emit()">
+      {{ canCheckout ? 'Spend time & checkout' : 'Not enough time credit' }}
+    </button>
+  </footer>
+</aside>

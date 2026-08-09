@@ -1,0 +1,46 @@
+.ring {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    transform: rotate(-90deg);
+  }
+
+  .track {
+    fill: none;
+    stroke: var(--credit-track, #eee);
+    stroke-width: 4;
+  }
+
+  .progress {
+    fill: none;
+    stroke: url(#none);
+    stroke: var(--purple);
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+  }
+
+  &.low .progress {
+    stroke: var(--orange-hot);
+  }
+
+  .label {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .tag {
+    font-size: 10px;
+    color: var(--ink-soft);
+  }
+}

@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { ProductGridComponent } from './components/product-grid/product-grid.component';
-import { CartDrawerComponent } from './components/cart-drawer/cart-drawer.component';
+import { Header } from './components/header/header';
+import { ProductCard } from './components/product-card/product-card';
+import { ProductGrid } from './components/product-grid/product-grid';
+import { CartDrawer } from './components/cart-drawer/cart-drawer';
+import { Product,TimeCredit,CartLine } from './core/models/models';
 import { ProductService } from './core/services/product.service';
 import { TimeCreditService } from './core/services/time-credit.service';
 import { CartService } from './core/services/cart.service';
-import { Product, TimeCredit, CartLine } from './core/models/models';
-import { formatHM } from './core/format-time';
+import { formatHM } from './core/format.time';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, ProductGridComponent, CartDrawerComponent],
+  imports: [CommonModule, Header, ProductGrid, CartDrawer],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
