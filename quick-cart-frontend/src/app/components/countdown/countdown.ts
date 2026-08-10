@@ -1,5 +1,7 @@
-import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef,Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+type UrgencyLevel = 'calm' | 'warm' | 'critical';
 
 @Component({
   selector: 'app-countdown',
@@ -12,22 +14,22 @@ export class CountdownComponent implements OnInit, OnDestroy {
   hours = 0;
   minutes = 0;
   seconds = 0;
-  totalSecondsLeft = 86400;
+  urgency: UrgencyLevel = 'calm';
 
-  private frameId?: number;
-  private lastRenderedSecond = -1;
+  private intervalId?: ReturnType<typeof setInterval>;
 
-  constructor(private zone: NgZone) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.zone.runOutsideAngular(() => this.loop());
+    this.tick();
+    this.intervalId = setInterval(() => this.tick(), 1000);
   }
 
   ngOnDestroy(): void {
-    if (this.frameId !== undefined) cancelAnimationFrame(this.frameId);
+    if (this.intervalId) clearInterval(this.intervalId);
   }
 
-  private loop = (): void => {
+  private tick(): void {
     const now = new Date();
     const midnight = new Date(now);
     midnight.setHours(24, 0, 0, 0);
@@ -35,31 +37,26 @@ export class CountdownComponent implements OnInit, OnDestroy {
     const diffMs = midnight.getTime() - now.getTime();
     const totalSeconds = Math.max(0, Math.floor(diffMs / 1000));
 
-    if (totalSeconds !== this.lastRenderedSecond) {
-      this.lastRenderedSecond = totalSeconds;
-      this.zone.run(() => {
-        this.totalSecondsLeft = totalSeconds;
-        this.hours = Math.floor(totalSeconds / 3600);
-        this.minutes = Math.floor((totalSeconds % 3600) / 60);
-        this.seconds = totalSeconds % 60;
-      });
-    }
+    this.hours = Math.floor(totalSeconds / 3600);
+    this.minutes = Math.floor((totalSeconds % 3600) / 60);
+    this.seconds = totalSeconds % 60;
+    this.urgency = this.getUrgency(totalSeconds);
 
-    this.frameId = requestAnimationFrame(this.loop);
-  };
-
-  pad(n: number): string {
-    return n.toString().padStart(2, '0');
+    this.cdr.detectChanges(); // force the view to update this tick
   }
 
-  /** urgency band drives color escalation — calm -> warm -> critical */
-  get urgency(): 'calm' | 'warm' | 'critical' {
-    if (this.totalSecondsLeft <= 3600) return 'critical'; // under 1hr
-    if (this.totalSecondsLeft <= 14400) return 'warm';     // under 4hr
+  private getUrgency(totalSeconds: number): UrgencyLevel {
+    if (totalSeconds <= 3600) return 'critical';
+    if (totalSeconds <= 14400) return 'warm';
     return 'calm';
   }
 
-  get isFinalMinute(): boolean {
-    return this.totalSecondsLeft <= 60;
+  get progressPercent(): number {
+    const totalToday = this.hours * 3600 + this.minutes * 60 + this.seconds;
+    return (totalToday / 86400) * 100;
+  }
+
+  pad(n: number): string {
+    return n.toString().padStart(2, '0');
   }
 }

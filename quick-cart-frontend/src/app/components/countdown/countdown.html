@@ -1,4 +1,4 @@
-<div class="countdown" [class.warm]="urgency === 'warm'" [class.critical]="urgency === 'critical'" [class.pulse]="isFinalMinute">
+<div class="countdown" [class.warm]="urgency === 'warm'" [class.critical]="urgency === 'critical'">
   <span class="segment">
     <span class="value">{{ pad(hours) }}</span>
     <span class="label">h</span>
@@ -14,4 +14,8 @@
     <span class="label">s</span>
   </span>
   <span class="tag">left today</span>
+</div>
+<div class="progress-track">
+  <div class="progress-fill" [class.warm]="urgency === 'warm'" [class.critical]="urgency === 'critical'"
+       [style.width.%]="progressPercent"></div>
 </div>

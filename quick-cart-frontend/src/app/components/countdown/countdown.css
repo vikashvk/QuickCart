@@ -37,26 +37,43 @@
   color: var(--ink-soft);
 }
 
+/* warm: under 4hrs left */
 .countdown.warm .value {
   color: var(--orange-hot);
 }
 
+/* critical: under 1hr left — red + pulse */
 .countdown.critical .value {
-  color: #e5484d;
-}
-.countdown.critical .tag {
-  color: #e5484d;
+  color: #e0303f;
+  animation: pulse 1s ease-in-out infinite;
 }
 
-.countdown.pulse .value {
-  animation: pulse-beat 1s ease-in-out infinite;
-}
-
-@keyframes pulse-beat {
+@keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.08); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .countdown.pulse .value { animation: none; }
+  .countdown.critical .value {
+    animation: none;
+  }
 }
+
+.progress-track {
+  margin-top: 4px;
+  height: 4px;
+  border-radius: 99px;
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background:  linear-gradient(
+    45deg,
+    #3498db,
+    #2ecc71
+  );
+  transition: width 1s linear, background 0.4s ease;
+}
+.progress-fill.warm { background: var(--orange-hot); }
+.progress-fill.critical { background: #e0303f; }
