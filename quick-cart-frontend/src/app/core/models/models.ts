@@ -1,13 +1,8 @@
 export interface Product {
     id: string;
     name: string;
-    // skuCode: string;
-
     description: string;
     category: string;
-    // old model price
-    //   price: number;
-
     /** price expressed in seconds — 1hr = 3600 */
     priceSeconds: number;
     imageUrl: string;
