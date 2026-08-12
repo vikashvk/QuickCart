@@ -26,7 +26,10 @@ public class Product {
 	@Id
 	private String prodId;
 	private String prodName;
-	private BigDecimal prodPrice;
+	private BigDecimal priceSeconds;
 	private String description;
+	private String category;
+	private String imageUrl;
+	private boolean inStock;
 
 }

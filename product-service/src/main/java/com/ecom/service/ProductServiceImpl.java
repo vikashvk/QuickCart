@@ -28,18 +28,21 @@ public class ProductServiceImpl {
         Product product = Product.builder()
                 .prodName(productRequest.name())
                 .description(productRequest.description())
-                .prodPrice(productRequest.price())
+                .priceSeconds(productRequest.priceSeconds())
+                .category(productRequest.category())
+                .imageUrl(productRequest.imageUrl())
+                .inStock(productRequest.inStock())
                 .build();
         productDao.save(product);
         log.info("Saved Successfully");
-        return new ProductResponse(product.getProdId(),product.getProdName(),product.getDescription(),product.getProdPrice());
+        return new ProductResponse(product.getProdId(),product.getProdName(),product.getDescription(),product.getPriceSeconds(), product.getCategory(), product.getImageUrl(),product.isInStock());
     }
 
     public List<ProductResponse> getAllProducts() {
         log.info("Reading");
         return productDao.findAll()
                 .stream()
-                .map(product -> new ProductResponse(product.getProdId(),product.getProdName(),product.getDescription(),product.getProdPrice()))
+                .map(product -> new ProductResponse(product.getProdId(),product.getProdName(),product.getDescription(),product.getPriceSeconds(), product.getCategory(), product.getImageUrl(), product.isInStock()))
                 .toList();
     }
 }
