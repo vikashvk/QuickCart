@@ -1,0 +1,13 @@
+$kind: http-request
+name: Delete Product
+url: http://localhost:9000/api/product/68ec785320891474da48477b
+method: DELETE
+body:
+  type: json
+  content: ""
+auth:
+  type: oauth2
+  credentials:
+    addTokenTo: header
+settings: {}
+order: 1897

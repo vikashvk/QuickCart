@@ -37,11 +37,11 @@
 .chip.category {
   left: 10px;
   background: rgba(255, 255, 255, 0.85);
-  color: var(--purple);
+  color: var(--subtle-green);
 }
 .chip.out-chip {
   right: 10px;
-  background: var(--orange-hot);
+  background: var(--subtle-blue);
   color: #fff;
 }
 
@@ -87,7 +87,7 @@ h3 {
   font-size: 13px;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, var(--purple), var(--orange-hot));
+  background: linear-gradient(135deg, var(--subtle-green), var(--subtle-blue));
   transition: transform 0.15s ease, opacity 0.2s ease;
 }
 .add-btn:hover:not(:disabled) { transform: translateY(-1px); }

@@ -34,6 +34,12 @@ public class ProductRestController {
 	@ResponseStatus(HttpStatus.OK)
 	public List<ProductResponse> getAllProduct(){
 		return productService.getAllProducts();
-
 	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public void deleteProduct(@PathVariable String id){
+		productService.deleteProduct(id);
+	}
+
 }

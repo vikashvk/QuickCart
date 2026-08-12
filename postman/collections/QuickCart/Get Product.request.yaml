@@ -1,0 +1,13 @@
+$kind: http-request
+name: Get Product
+url: http://localhost:9000/api/product
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: oauth2
+  credentials:
+    addTokenTo: header
+settings: {}
+order: 1760

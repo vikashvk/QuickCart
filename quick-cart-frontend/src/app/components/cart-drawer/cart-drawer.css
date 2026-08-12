@@ -66,7 +66,7 @@ header h2 { font-size: 18px; color: var(--ink); }
   font-size: 12px;
   padding: 4px;
 }
-.remove:hover { color: var(--orange-hot); }
+.remove:hover { color: var(--subtle-blue); }
 
 .empty {
   padding: 40px 20px;
@@ -87,8 +87,8 @@ footer {
   color: var(--ink);
 }
 .row.subtle { font-size: 12px; color: var(--ink-soft); }
-.total { font-family: var(--font-display); font-weight: 700; color: var(--purple); }
-.negative { color: var(--orange-hot); font-weight: 700; }
+.total { font-family: var(--font-display); font-weight: 700; color: var(--subtle-green); }
+.negative { color: var(--subtle-blue); font-weight: 700; }
 
 .checkout-btn {
   width: 100%;
@@ -98,7 +98,7 @@ footer {
   color: #fff;
   font-weight: 600;
   font-size: 14px;
-  background: linear-gradient(135deg, var(--purple), var(--orange-hot));
+  background: linear-gradient(135deg, var(--subtle-green), var(--subtle-blue));
 }
 .checkout-btn:disabled {
   background: #d8d0e2;

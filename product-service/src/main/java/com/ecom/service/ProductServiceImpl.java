@@ -45,4 +45,11 @@ public class ProductServiceImpl {
                 .map(product -> new ProductResponse(product.getProdId(),product.getProdName(),product.getDescription(),product.getPriceSeconds(), product.getCategory(), product.getImageUrl(), product.isInStock()))
                 .toList();
     }
+
+    public void deleteProduct(String id) {
+        if (!productDao.existsById(id)) {
+            throw new RuntimeException("Product not found with id: " + id);
+        }
+        productDao.deleteById(id);
+    }
 }

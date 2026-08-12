@@ -39,7 +39,7 @@
 
 /* warm: under 4hrs left */
 .countdown.warm .value {
-  color: var(--orange-hot);
+  color: var(--subtle-blue);
 }
 
 /* critical: under 1hr left — red + pulse */
@@ -75,5 +75,5 @@
   );
   transition: width 1s linear, background 0.4s ease;
 }
-.progress-fill.warm { background: var(--orange-hot); }
+.progress-fill.warm { background: var(--subtle-blue); }
 .progress-fill.critical { background: #e0303f; }

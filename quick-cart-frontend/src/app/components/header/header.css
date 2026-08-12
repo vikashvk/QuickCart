@@ -43,7 +43,7 @@
 
 .nav-link.active {
   color: #fff;
-  background: linear-gradient(135deg, var(--purple), var(--orange-hot));
+  background: linear-gradient(135deg, var(--subtle-green), var(--subtle-blue));
 }
 
 .actions {
@@ -75,7 +75,7 @@
   position: absolute;
   top: -4px;
   right: -4px;
-  background: var(--orange-hot);
+  background: var(--subtle-blue);
   color: #fff;
   font-size: 10px;
   font-weight: 700;
@@ -92,7 +92,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--purple), var(--orange));
+  background: linear-gradient(135deg, var(--subtle-green), var(--subtle-blue));
   color: #fff;
   font-family: var(--font-display);
   font-weight: 700;
