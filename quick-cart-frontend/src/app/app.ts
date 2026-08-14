@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Header } from './components/header/header';
 import { ProductCard } from './components/product-card/product-card';
@@ -28,10 +28,14 @@ export class App implements OnInit {
     private productService: ProductService,
     private creditService: TimeCreditService,
     private cartService: CartService,
+    private ngZone: NgZone,
   ) {}
 
   ngOnInit(): void {
-    this.productService.getAll().subscribe(p => (this.products = p));
+    this.productService.getAll().subscribe(p => this.ngZone.run(() => {
+      console.debug('[App] products emitted:', p && p.length ? p.length : 0, p);
+      this.products = p;
+    }));
     this.creditService.credit$.subscribe(c => (this.credit = c));
     this.cartService.cart$.subscribe(lines => (this.cartLines = lines));
 
