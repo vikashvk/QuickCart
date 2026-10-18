@@ -3,6 +3,8 @@ package com.ecom.api_gateway.routes;
 import org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.function.RequestPredicates;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerResponse;
@@ -54,6 +56,14 @@ public class Routes {
                 .route(RequestPredicates.path("/aggregate/inventory-service/v3/api-docs"),
                         http("http://localhost:8080"))
                 .filter(setPath("/api-docs"))
+                .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> fallbackRoute(){
+        return route("fallbackRoute")
+                .GET("/fallbackRoute", request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                .body("Service Unavailable, Please try again after some time"))
                 .build();
     }
 }
