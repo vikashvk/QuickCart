@@ -1,5 +1,6 @@
 package com.ecom.api_gateway.routes;
 
+import org.springframework.cloud.gateway.server.mvc.filter.CircuitBreakerFilterFunctions;
 import org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,13 +14,17 @@ import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunction
 import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
 import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
 
+import java.net.URI;
+
 @Configuration
 public class Routes {
 
     @Bean
     public RouterFunction<ServerResponse> productServiceRoute() {
         return GatewayRouterFunctions.route("product-service").route(RequestPredicates.path("/api/product/**"),
-                        http("http://localhost:8080")).build();
+                        http("http://localhost:8080"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("productServiceCircuitBreaker",URI.create("forward:/fallbackRoute")))
+                .build();
     }
 
     @Bean
