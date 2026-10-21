@@ -32,6 +32,7 @@ public class Routes {
         return GatewayRouterFunctions.route("product_service_swagger")
                 .route(RequestPredicates.path("/aggregate/product-service/v3/api-docs"),
                 http("http://localhost:8080"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("productServiceSwaggerCircuitBreaker",URI.create("forward:/fallbackRoute")))
                 .filter(setPath("/api-docs"))
                 .build();
     }
@@ -39,20 +40,25 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> orderServiceRoute() {
         return GatewayRouterFunctions.route("order-service").route(RequestPredicates.path("/api/order/**"),
-                http("http://localhost:8081")).build();
+                http("http://localhost:8081"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("orderServiceCircuitBreaker",URI.create("forward:/fallbackRoute")))
+                .build();
     }
     @Bean
     public RouterFunction<ServerResponse> orderServiceSwaggerRoute() {
         return GatewayRouterFunctions.route("order_service_swagger")
                 .route(RequestPredicates.path("/aggregate/order-service/v3/api-docs"),
                         http("http://localhost:8080"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("orderServiceSwaggerCircuitBreaker",URI.create("forward:/fallbackRoute")))
                 .filter(setPath("/api-docs"))
                 .build();
     }
     @Bean
     public RouterFunction<ServerResponse> inventoryServiceRoute() {
         return GatewayRouterFunctions.route("inventory_service").route(RequestPredicates.path("/api/inventory/**"),
-                http("http://localhost:8082")).build();
+                http("http://localhost:8082"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("inventoryServiceCircuitBreaker",URI.create("forward:/fallbackRoute")))
+                .build();
     }
 
     @Bean
@@ -60,6 +66,7 @@ public class Routes {
         return GatewayRouterFunctions.route("inventory_service_swagger")
                 .route(RequestPredicates.path("/aggregate/inventory-service/v3/api-docs"),
                         http("http://localhost:8080"))
+                .filter(CircuitBreakerFilterFunctions.circuitBreaker("inventoryServiceSwaggerCircuitBreaker",URI.create("forward:/fallbackRoute")))
                 .filter(setPath("/api-docs"))
                 .build();
     }
