@@ -137,5 +137,5 @@ Single entry point, cross-cutting concerns (auth, rate limiting, request routing
 
 ## Angular
 
-"ZeroHour"
+"ZeroHour" with day countdown live, pomodoro timer and to-do list
 
