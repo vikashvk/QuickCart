@@ -6,6 +6,7 @@ A simple E-Commerce application where customers can order products. This applica
 :sparkles: Order Service  
 :sparkles: Inventory Service  
 :sparkles: Notification Service  
+:sparkles: Rag Chat bot Service  
 
 
  ## Product Service
