@@ -1,8 +1,17 @@
 workspace:
   id: 8cdf2cd5-269b-4825-87c3-574b75b0ec3a
+
 localResources:
   collections:
-    - ../QuickCart.postman_collection.json
+    - ../QuickCart
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
 cloudResources:
   collections:
+    ../QuickCart: 5016140-71a63d1a-d814-4b9c-82aa-9fce799f0d28
+    ../postman/collections/apis: 5016140-bf2e3195-1d15-463a-aa8d-bcafbf09272a
+    ../postman/collections/REST API basics- CRUD, test & variable: 5016140-d951d930-5381-4fc8-b611-742da2cd57be
+    ../postman/collections/End-to-End Tests: 5016140-3098ff11-6bb6-4bb4-b378-35323fc5ddb1
+    ../postman/collections/Ravelin QA orders: 5016140-3d027fed-4c02-4f8e-889c-fa133abff380
     ../postman/collections/QuickCart: 5016140-71a63d1a-d814-4b9c-82aa-9fce799f0d28

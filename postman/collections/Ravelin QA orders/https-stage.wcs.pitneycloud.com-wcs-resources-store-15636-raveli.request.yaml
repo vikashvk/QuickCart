@@ -1,0 +1,24 @@
+$kind: http-request
+name: https://stage.wcs.pitneycloud.com/wcs/resources/store/15636/ravelin/callback
+url: https://stage.wcs.pitneycloud.com/wcs/resources/store/15636/ravelin/callback
+method: POST
+headers:
+  Authorization: "{{basic_auth_10sx}}"
+body:
+  type: text
+  content: |-
+    {
+      "orderId": "3341113",
+      "responseFormat": [
+        "application/json"
+      ],
+      "label": "APPROVED",
+      "reviewer": {
+        "name": "Vikash ",
+        "email": "vikash@pb.com"
+      },
+      "storeId": "15636",
+      "timestamp": "2023-11-22T13:15:36.134253086Z"
+    }
+settings: {}
+order: 2000

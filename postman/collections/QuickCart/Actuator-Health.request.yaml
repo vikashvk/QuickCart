@@ -1,0 +1,9 @@
+$kind: http-request
+url: http://localhost:9000/actuator/health
+method: GET
+auth:
+  type: oauth2
+  credentials:
+    addTokenTo: header
+settings: {}
+order: 7000

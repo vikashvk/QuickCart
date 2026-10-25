@@ -1,0 +1,14 @@
+$kind: http-request
+name: http://localhost:8080/api/product
+url: http://localhost:8080/api/product
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "prodName": "PS5",
+        "description": "Gaming Console 1 number",
+        "prodPrice": "50000"
+    }
+settings: {}
+order: 1000

@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://localhost:8081/api/order
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "skuCode": "Spider-man Mask",
+        "price" :  "150.00",
+        "quantity": 1
+
+    }
+order: 3000

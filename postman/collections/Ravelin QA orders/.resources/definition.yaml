@@ -1,0 +1,5 @@
+$kind: collection
+description: ""
+variables:
+  - key: basic_auth_10sx
+    secret: true

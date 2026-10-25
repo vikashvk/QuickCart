@@ -1,0 +1,32 @@
+$kind: http-request
+url: https://aws-appqa1.pb.com/wcs/resources/store/15636/ravelin/callback?responseFormat=application/json
+method: POST
+headers:
+  Authorization: token Y2FsbGJhY2tzQHJhdmVsaW4uY29tOlBCMTIzNDU2
+queryParams:
+  responseFormat: application/json
+body:
+  type: json
+  content: "{\r
+
+    \    \"label\": \"APPROVED\",\r
+
+    \    \"reviewer\": {\r
+
+    \        \"name\": \"Egle Nartautaite\",\r
+
+    \        \"email\": \"bala.bukkapatnam@pb.com\"\r
+
+    \    },\r
+
+    \    \"storeId\": \"15636\",\r
+
+    \    \"orderId\": \"40000138231\",\r
+
+    \    \"timestamp\": \"2023-06-02T13:15:36.134253086Z\"\r
+
+    }"
+auth:
+  type: bearer
+settings: {}
+order: 1000
