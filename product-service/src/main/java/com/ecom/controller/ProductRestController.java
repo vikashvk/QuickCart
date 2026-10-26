@@ -33,6 +33,11 @@ public class ProductRestController {
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<ProductResponse> getAllProduct(){
+		try{
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 		return productService.getAllProducts();
 	}
 
